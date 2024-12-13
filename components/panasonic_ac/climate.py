@@ -47,6 +47,7 @@ HORIZONTAL_SWING_OPTIONS = [
     "left",
     "left_center",
     "center",
+    "left_right",
     "right_center",
     "right",
 ]

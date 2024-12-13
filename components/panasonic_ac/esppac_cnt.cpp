@@ -402,6 +402,8 @@ std::string PanasonicACCNT::determine_horizontal_swing(uint8_t swing) {
       return "left_center";
     case 0x06:
       return "center";
+    case 0x08:
+      return "left_right";
     case 0x0B:
       return "right_center";
     case 0x0C:
