@@ -541,6 +541,8 @@ void PanasonicACCNT::on_horizontal_swing_change(const std::string &swing) {
     this->cmd[4] = (this->cmd[4] & 0xF0) + 0x0A;
   else if (swing == "center")
     this->cmd[4] = (this->cmd[4] & 0xF0) + 0x06;
+  else if (swing == "left_right")
+    this->cmd[4] = (this->cmd[4] & 0xF0) + 0x08;
   else if (swing == "right_center")
     this->cmd[4] = (this->cmd[4] & 0xF0) + 0x0B;
   else if (swing == "right")
