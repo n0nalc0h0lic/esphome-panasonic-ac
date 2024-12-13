@@ -1,6 +1,7 @@
 # Overview
 
 An open source alternative for the Panasonic wi-fi adapter that works locally without the cloud.
+This fork especially aims for the usage of the Panasonic CS-VZ9SKE Air Conditioner.
 
 # Features
 
