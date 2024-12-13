@@ -91,7 +91,7 @@ void PanasonicACCNT::control(const climate::ClimateCall &call) {
 
     std::string fanMode = *call.get_custom_fan_mode();
 
-    if (fanMode == "Automatic")
+    if (fanMode == "Auto")
       this->cmd[3] = 0xA0;
     else if (fanMode == "1")
       this->cmd[3] = 0x30;
@@ -99,9 +99,9 @@ void PanasonicACCNT::control(const climate::ClimateCall &call) {
       this->cmd[3] = 0x40;
     else if (fanMode == "3")
       this->cmd[3] = 0x50;
+    //else if (fanMode == "4")
+    //  this->cmd[3] = 0x60;
     else if (fanMode == "4")
-      this->cmd[3] = 0x60;
-    else if (fanMode == "5")
       this->cmd[3] = 0x70;
     else
       ESP_LOGV(TAG, "Unsupported fan mode requested");
@@ -345,6 +345,8 @@ climate::ClimateMode PanasonicACCNT::determine_mode(uint8_t mode) {
 }
 
 std::string PanasonicACCNT::determine_fan_speed(uint8_t speed) {
+
+  ESP_LOGW(TAG, "Received fan speed: 0x%02X", speed);
   switch (speed) {
     case 0xA0:  // Auto
       return "Automatic";
@@ -354,10 +356,10 @@ std::string PanasonicACCNT::determine_fan_speed(uint8_t speed) {
       return "2";
     case 0x50:  // 3
       return "3";
-    case 0x60:  // 4
-      return "4";
+    //case 0x60:  // 4
+    //  return "4";
     case 0x70:  // 5
-      return "5";
+      return "4";
     default:
       ESP_LOGW(TAG, "Received unknown fan speed");
       return "Unknown";
@@ -367,7 +369,7 @@ std::string PanasonicACCNT::determine_fan_speed(uint8_t speed) {
 std::string PanasonicACCNT::determine_vertical_swing(uint8_t swing) {
   uint8_t nib = (swing >> 4) & 0x0F;  // Left nib for vertical swing
 
-  ESP_LOGW(TAG, "Received vertical swing mode: 0x%02X", nib);
+  //ESP_LOGW(TAG, "Received vertical swing mode: 0x%02X", nib);
   switch (nib) {
     case 0x0E:
       return "swing";
@@ -394,7 +396,7 @@ std::string PanasonicACCNT::determine_vertical_swing(uint8_t swing) {
 std::string PanasonicACCNT::determine_horizontal_swing(uint8_t swing) {
   uint8_t nib = (swing >> 0) & 0x0F;  // Right nib for horizontal swing
 
-  ESP_LOGW(TAG, "Received horizontal swing mode: 0x%02X", nib);
+  //ESP_LOGW(TAG, "Received horizontal swing mode: 0x%02X", nib);
   switch (nib) {
     case 0x0D:
       return "auto";
@@ -414,7 +416,6 @@ std::string PanasonicACCNT::determine_horizontal_swing(uint8_t swing) {
       return "unsupported";
     default:
       ESP_LOGW(TAG, "Received unknown horizontal swing mode: 0x%02X", nib);
-      ESP_LOGW(TAG, "Received unknown horizontal swing mode: 0x%X", nib);
       return "Unknown";
   }
 }
