@@ -393,7 +393,6 @@ std::string PanasonicACCNT::determine_vertical_swing(uint8_t swing) {
 std::string PanasonicACCNT::determine_horizontal_swing(uint8_t swing) {
   uint8_t nib = (swing >> 0) & 0x0F;  // Right nib for horizontal swing
 
-  ESP_LOGW(TAG, "Received horizontal swing mode: 0x%02X", nib);
   switch (nib) {
     case 0x0D:
       return "auto";
@@ -410,7 +409,7 @@ std::string PanasonicACCNT::determine_horizontal_swing(uint8_t swing) {
     case 0x00:
       return "unsupported";
     default:
-      ESP_LOGW(TAG, "Received unknown horizontal swing mode: %#x", nib);
+      ESP_LOGW(TAG, "Received unknown horizontal swing mode: 0x%02X", nib);
       return "Unknown";
   }
 }
