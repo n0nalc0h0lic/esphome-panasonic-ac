@@ -10,6 +10,9 @@ This fork especially aims for the usage of the Panasonic CS-VZ9SKE Air Condition
 * Receive live reports and state from the AC
 * Uses the UART interface on the AC instead of the IR interface
 * Provides a drop-in replacement for the Panasonic DNSK-P11 and the CZ-TACG1 wifi module
+* CS-VZ9SKE specific features:
+  * 4 fan speeds to select (instead of 5)
+  * left/right horizontal swing mode
 
 # Supported hardware
 
