@@ -346,7 +346,7 @@ climate::ClimateMode PanasonicACCNT::determine_mode(uint8_t mode) {
 
 std::string PanasonicACCNT::determine_fan_speed(uint8_t speed) {
 
-  ESP_LOGW(TAG, "Received fan speed: 0x%02X", speed);
+  //ESP_LOGW(TAG, "Received fan speed: 0x%02X", speed);
   switch (speed) {
     case 0xA0:  // Auto
       return "Automatic";
