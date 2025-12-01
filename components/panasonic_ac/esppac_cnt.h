@@ -48,19 +48,6 @@ class PanasonicACCNT : public PanasonicAC {
 
   bool verify_packet();
   void handle_packet();
-
-  climate::ClimateMode determine_mode(uint8_t mode);
-  std::string determine_fan_speed(uint8_t speed);
-
-  std::string determine_vertical_swing(uint8_t swing);
-  std::string determine_horizontal_swing(uint8_t swing);
-
-  std::string determine_preset(uint8_t preset);
-  bool determine_preset_nanoex(uint8_t preset);
-  bool determine_eco(uint8_t value);
-  bool determine_econavi(uint8_t value);
-  bool determine_mild_dry(uint8_t value);
-  uint16_t determine_power_consumption(uint8_t byte_28, uint8_t multiplier, uint8_t offset);
 };
 
 }  // namespace CNT
